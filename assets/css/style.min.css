@@ -51,7 +51,7 @@ a:hover {
 
 /* HTML: <div class="loader"></div> */
 /* Fullscreen blur overlay */
-#preloader {
+/* #preloader {
   position: fixed;
   top: 0; left: 0;
   width: 100vw;
@@ -62,19 +62,19 @@ a:hover {
   align-items: center;
   justify-content: center;
   z-index: 9999;
-}
+} */
 
 /* Loader text animation */
-.loader {
+/* .loader {
   width: fit-content;
   font-weight: bold;
   font-family: monospace;
   font-size: 32px;
   background: radial-gradient(circle closest-side, #000 94%, #0000) right/calc(200% - 1em) 100%;
   animation: l24 1s infinite alternate linear;
-}
+} */
 
-.loader::before {
+/* .loader::before {
   content: "KHK Technologies";
   line-height: 1em;
   color: #0000;
@@ -88,7 +88,7 @@ a:hover {
   100% {
     background-position: left;
   }
-}
+} */
 
 
 /* #preloader {
@@ -1655,3 +1655,111 @@ form button[type="submit"]:hover {
     text-decoration: none;
     color: white;
   }
+
+
+
+/* preloader */
+/* Preloader container style */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #1E2235;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Your WLAN loader styles */
+.wlan-search {
+  --color: #fff;
+  --background: #1E2235;
+  position: relative;
+  border-radius: 50%;
+  padding: 24px;
+  background: var(--background);
+}
+.wlan-search div {
+  position: relative;
+  animation: div 2.5s linear infinite;
+}
+.wlan-search svg {
+  width: 40px;
+  height: 40px;
+  display: block;
+  fill: none;
+  stroke: var(--color);
+  stroke-linecap: round;
+  stroke-width: var(--sw, 3.5);
+  animation: var(--name, top) 2.5s linear infinite;
+}
+.wlan-search svg:not(:first-child) {
+  left: 0;
+  top: 0;
+  position: absolute;
+}
+.wlan-search svg.middle {
+  --sw: 3;
+  --name: middle;
+  transform-origin: 50% 67%;
+}
+.wlan-search svg.bottom {
+  --sw: 3;
+  --name: bottom;
+}
+.wlan-search div::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  top: 26px;
+  left: 16px;
+  border-radius: 50%;
+  background: var(--color);
+  position: absolute;
+  animation: dot 2.5s linear infinite;
+  transform: scale(.9);
+}
+
+/* Animations */
+@keyframes div {
+  9%, 53% { transform: translateY(-5px); }
+  60%, 100% { transform: none; }
+}
+
+@keyframes top {
+  9%, 14% { transform: translateY(9px); }
+  20%, 51%, 53% { transform: translateY(8px); }
+  27%, 29% { transform: translate(-7px, 7px); }
+  35%, 37% { transform: translateY(7px); }
+  43%, 45% { transform: translate(7px, 7px); }
+  60%, 100% { transform: none; }
+}
+
+@keyframes middle {
+  9%, 14% { transform: translateY(-4px) rotate(180deg); }
+  20%, 51%, 53% { transform: translateY(-2px) rotate(180deg); }
+  27%, 29% { transform: translate(-6px, -3px) rotate(180deg); }
+  35%, 37% { transform: translateY(-5px) rotate(180deg); }
+  43%, 45% { transform: translate(6px, -3px) rotate(180deg); }
+  60%, 100% { transform: none; }
+}
+
+@keyframes bottom {
+  9%, 14%, 51%, 53% { transform: translateY(1px); }
+  27%, 29% { transform: translate(-8px, 0); }
+  35%, 37% { transform: translateY(-1px); }
+  43%, 45% { transform: translate(8px, 0); }
+  20%, 60%, 100% { transform: none; }
+}
+
+@keyframes dot {
+  9%, 14% { transform: scale(.9) translateY(-1px); }
+  20%, 51%, 53% { transform: scale(.9) translateY(-2px); }
+  27%, 29% { transform: scale(.9) translate(-12px, -2px); }
+  35%, 37% { transform: scale(.9) translateY(-4px); }
+  43%, 45% { transform: scale(.9) translate(12px, -2px); }
+  60%, 100% { transform: scale(.9); }
+}
